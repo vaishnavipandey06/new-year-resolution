@@ -1,27 +1,34 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 
-export default function ParallaxSection({ children, offset = 100 }) {
+export default function ParallaxSection({ children, offset = 120 }) {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start 80%", "end 20%"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    [0, 1, 1, 0]
-  );
+  // Smooth horizontal parallax
+  const xRaw = useTransform(scrollYProgress, [0, 1], [-offset, offset]);
+  const x = useSpring(xRaw, {
+    stiffness: 60,
+    damping: 20,
+    mass: 0.8,
+  });
+
+  // Elegant reveal
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 1], [0, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1]);
 
   return (
-    <section className="min-h-[60vh] flex items-center justify-center">
+    <section
+      ref={ref}
+      className="min-h-[70vh] flex items-center justify-center overflow-hidden"
+    >
       <motion.div
-        ref={ref}
-        style={{ y, opacity }}
-        className="w-full flex justify-center"
+        style={{ x, opacity, scale }}
+        className="flex gap-8 will-change-transform"
       >
         {children}
       </motion.div>

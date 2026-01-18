@@ -1,6 +1,8 @@
 export default function Hero() {
   return (
-    <section className="flex justify-center px-4">
+    <section 
+    id="home"
+    className="flex justify-center px-4">
       <div className="w-full max-w-5xl">
 
         {/* Hero Glass Panel */}
