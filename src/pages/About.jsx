@@ -1,141 +1,174 @@
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { useState } from "react";
+
+const skills = [
+  {
+    title: "Full Stack Web",
+    items: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL"],
+    color: "cyan",
+  },
+  {
+    title: "Data Science",
+    items: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
+    color: "green",
+  },
+  {
+    title: "DSA Foundations",
+    items: ["Arrays", "Strings", "Two Pointers", "Stacks", "HashMaps"],
+    color: "purple",
+  },
+  {
+    title: "Tools & Workflow",
+    items: ["TailwindCSS", "GitHub", "Docker", "Jupyter", "Neovim"],
+    color: "cyan",
+  },
+];
 
 export default function About() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0a0a1a] to-[#1a0a2e] text-white relative overflow-hidden px-6 pt-32">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#1a0a2e] to-[#2a0a3e] text-white">
 
-      {/* Cosmic background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.12),transparent_60%)]" />
+      {/* background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.15),transparent_60%)]" />
 
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
+      {/* container */}
+      <div className="relative max-w-[1280px] mx-auto px-6 pt-32 pb-32 space-y-32">
 
-        {/* LEFT COLUMN */}
-        <motion.div
-          className="lg:col-span-2 space-y-6"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Hero Glass Card */}
-          <div className="rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/20 p-8 shadow-[0_0_40px_rgba(0,212,255,0.25)]">
-            <h1 className="text-4xl font-bold text-cyan-400 tracking-wide">
+        {/* ================= HERO ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+
+          {/* profile card */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-2 flex justify-center"
+          >
+            <div className="w-[320px] h-[320px] rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_30px_80px_rgba(0,212,255,0.25)] flex items-center justify-center">
+              <span className="text-white/40 text-sm">
+                Profile Image
+              </span>
+            </div>
+          </motion.div>
+
+          {/* text */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="lg:col-span-3 space-y-6"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-cyan-400 tracking-wide">
               Syed Faiz
             </h1>
-            <p className="mt-2 text-lg text-cyan-200">
+
+            <h2 className="text-xl md:text-2xl text-cyan-200">
               Full Stack Developer | Junior Data Scientist
-            </p>
-            <p className="mt-2 text-sm text-purple-300">
+            </h2>
+
+            <h3 className="text-sm md:text-base text-purple-300">
               Python DSA • React • ML • CMR University CS
+            </h3>
+
+            <p className="max-w-xl text-gray-300 leading-relaxed">
+              Building scalable web applications and data-driven systems
+              with clean architecture and strong problem-solving foundations.
             </p>
-            <p className="mt-4 text-gray-300 leading-relaxed">
-              Building scalable web applications and intelligent data solutions using modern technologies.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* RIGHT COLUMN – MIND MAP */}
-        <motion.div
-          className="lg:col-span-3 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="relative w-full h-[520px] flex items-center justify-center">
-
-            {/* Center Node */}
-            <Node title="Technical Skills" size="lg" />
-
-            {/* Full Stack */}
-            <Branch x="-220px" y="-120px" color="cyan">
-              <Node title="Full Stack Web" />
-              <SmallNodes items={["React", "Node.js", "Express", "MongoDB", "PostgreSQL"]} />
-            </Branch>
-
-            {/* Data Science */}
-            <Branch x="220px" y="-120px" color="green">
-              <Node title="Data Science" />
-              <SmallNodes items={["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"]} />
-            </Branch>
-
-            {/* DSA */}
-            <Branch x="-220px" y="140px" color="purple">
-              <Node title="DSA Foundations" />
-              <SmallNodes items={["Arrays", "Strings", "Stacks", "Queues", "HashMaps", "Binary Search"]} />
-            </Branch>
-
-            {/* Tools */}
-            <Branch x="220px" y="140px" color="cyan">
-              <Node title="Tools" />
-              <SmallNodes items={["Tailwind", "Git/GitHub", "Docker", "Jupyter", "Neovim"]} />
-            </Branch>
-
-          </div>
-        </motion.div>
-      </div>
-
-      {/* CTA */}
-      <motion.div
-        className="relative max-w-5xl mx-auto mt-32 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-10 text-center"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="text-3xl font-semibold text-cyan-300">
-          Open for Full Stack / Data Roles 2026+
-        </h2>
-        <p className="mt-4 text-gray-300">
-          Web apps. Data insights. Scalable solutions ↓
-        </p>
-        <div className="mt-8 flex justify-center gap-6 flex-wrap">
-          <a className="px-6 py-3 rounded-full bg-cyan-400 text-black font-semibold hover:scale-105 transition">Email</a>
-          <a className="px-6 py-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 transition">LinkedIn</a>
-          <a className="px-6 py-3 rounded-full border border-purple-400 text-purple-300 hover:bg-purple-400/10 transition">GitHub</a>
+          </motion.div>
         </div>
-      </motion.div>
 
+        {/* ================= SKILLS ================= */}
+        <div className="space-y-16">
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-3xl md:text-4xl font-semibold text-cyan-300"
+          >
+            Technical Skills
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {skills.map((skill, i) => (
+              <SkillCard key={skill.title} skill={skill} delay={i * 0.1} />
+            ))}
+          </div>
+        </div>
+
+        {/* ================= CTA ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-12 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]"
+        >
+          <h2 className="text-3xl md:text-4xl font-semibold text-cyan-300">
+            Open for Full Stack / Data Roles (2026+)
+          </h2>
+
+          <p className="mt-4 text-gray-300">
+            Web apps • Data insights • Scalable systems
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
+            <button className="px-8 py-3 rounded-full bg-cyan-400 text-black font-semibold hover:scale-105 transition">
+              Get Resume
+            </button>
+
+            <button className="px-8 py-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 transition">
+              LinkedIn
+            </button>
+
+            <button className="px-8 py-3 rounded-full border border-purple-400 text-purple-300 hover:bg-purple-400/10 transition">
+              GitHub
+            </button>
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
 }
 
-function Node({ title, size = "md" }) {
+/* ================= SKILL CARD ================= */
+
+function SkillCard({ skill, delay }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <motion.div
-      whileHover={{ scale: 1.2, rotate: 6 }}
-      className={`absolute rounded-full flex items-center justify-center text-center backdrop-blur-xl border border-white/30 shadow-lg
-      ${size === "lg" ? "w-40 h-40 text-lg bg-white/15" : "w-28 h-28 text-sm bg-white/10"}`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 cursor-pointer hover:shadow-[0_0_40px_rgba(0,212,255,0.25)] transition"
+      onClick={() => setOpen(!open)}
     >
-      {title}
-    </motion.div>
-  );
-}
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-cyan-300">
+          {skill.title}
+        </h3>
+        <span className="text-cyan-400 text-xl">
+          {open ? "–" : "+"}
+        </span>
+      </div>
 
-function Branch({ children, x, y }) {
-  return (
-    <motion.div
-      className="absolute"
-      style={{ transform: `translate(${x}, ${y})` }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-    >
-      {children}
+      <motion.div
+        initial={false}
+        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+        className="overflow-hidden"
+      >
+        <div className="mt-4 flex flex-wrap gap-3">
+          {skill.items.map((item) => (
+            <span
+              key={item}
+              className="px-4 py-2 rounded-full text-xs bg-white/10 border border-white/20"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
-  );
-}
-
-function SmallNodes({ items }) {
-  return (
-    <div className="mt-32 flex flex-wrap gap-3 justify-center">
-      {items.map((i) => (
-        <motion.div
-          key={i}
-          whileHover={{ scale: 1.15 }}
-          className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-xs"
-        >
-          {i}
-        </motion.div>
-      ))}
-    </div>
   );
 }

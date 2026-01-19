@@ -1,56 +1,60 @@
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaCode } from "react-icons/fa";
+
 export default function Hero() {
   return (
-    <section 
-    id="home"
-    className="flex justify-center px-4">
-      <div className="w-full max-w-5xl">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+    >
+      {/* LEFT TEXT */}
+      <div>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-neonCyan drop-shadow-glow">
+          Syed Faiz
+        </h1>
 
-        {/* Hero Glass Panel */}
-        <div
-          className="
-            mt-32
-            relative rounded-2xl
-            bg-gradient-to-br from-white/10 to-white/5
-            backdrop-blur-2xl
-            border border-white/20
-            shadow-[0_20px_60px_rgba(0,0,0,0.6)]
-            before:content-['']
-            before:absolute before:inset-0
-            before:rounded-2xl
-            before:bg-gradient-to-br
-            before:from-white/20 before:to-transparent
-            before:opacity-10
-            before:pointer-events-none
-            p-10
-          "
-        >
-          <div className="max-w-xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-cyan-400">
-              Syed Faiz
-            </h1>
+        <p className="mt-4 text-xl text-white/80">
+          Full Stack Developer | Junior Data Scientist
+        </p>
 
-            <p className="mt-2 text-cyan-200 text-lg">
-              Full Stack Web Developer | Data Scientist
-            </p>
-
-            <p className="mt-5 text-gray-300 leading-relaxed">
-              I build interactive, performance-focused web experiences using modern web and data technologies.
-            </p>
-
-            <button
-              className="
-                mt-8 px-8 py-3 rounded-full
-                bg-cyan-400 text-black font-semibold
-                hover:scale-105 transition-all
-                shadow-[0_0_25px_rgba(34,211,238,0.6)]
-              "
-            >
-              Download Resume
-            </button>
-          </div>
+        <div className="mt-6 flex gap-5 text-2xl text-white/70">
+          <a href="#" className="hover:text-neonCyan transition">
+            <FaLinkedin />
+          </a>
+          <a href="#" className="hover:text-neonCyan transition">
+            <FaGithub />
+          </a>
+          <a href="#" className="hover:text-neonCyan transition">
+            <FaCode />
+          </a>
         </div>
 
+        <div className="mt-8 flex gap-4">
+          <button className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-xl hover:bg-cyan-400/30 hover:scale-105 transition-all">
+            View Projects
+          </button>
+          <button className="px-6 py-3 rounded-xl bg-purple-500/20 border border-purple-400/40 backdrop-blur-xl hover:bg-purple-400/30 hover:scale-105 transition-all">
+            Contact Me
+          </button>
+        </div>
       </div>
-    </section>
+
+      {/* RIGHT PROFILE */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 6, repeat: Infinity }}
+        className="flex justify-center"
+      >
+        <div className="relative w-72 h-72 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-neon overflow-hidden">
+          <img
+            src="/profile.jpg"
+            alt="Syed Faiz"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
