@@ -1,60 +1,111 @@
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaCode } from "react-icons/fa";
+import { Github, Linkedin } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 
 export default function Hero() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-    >
-      {/* LEFT TEXT */}
-      <div>
-        <h1 className="text-5xl md:text-7xl font-extrabold text-neonCyan drop-shadow-glow">
-          Syed Faiz
-        </h1>
+    <section className="min-h-screen flex items-center justify-center px-6">
+      <div
+        className="
+          relative w-full max-w-6xl
+          grid grid-cols-1 md:grid-cols-2 gap-12
+          bg-white/5 backdrop-blur-xl
+          border border-white/10 rounded-3xl
+          px-12 py-16
+        "
+      >
+        {/* LEFT TEXT */}
+        <div className="flex flex-col justify-center">
+          <p className="text-white/60 mb-2">Hi there, I’m</p>
 
-        <p className="mt-4 text-xl text-white/80">
-          Full Stack Developer | Junior Data Scientist
-        </p>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="text-white">Syed </span>
+            <span className="text-cyan-400">Faiz</span>
+          </h1>
 
-        <div className="mt-6 flex gap-5 text-2xl text-white/70">
-          <a href="#" className="hover:text-neonCyan transition">
-            <FaLinkedin />
-          </a>
-          <a href="#" className="hover:text-neonCyan transition">
-            <FaGithub />
-          </a>
-          <a href="#" className="hover:text-neonCyan transition">
-            <FaCode />
-          </a>
+          <p className="text-white/70 mb-4">
+            Full Stack Developer · Junior Data Scientist
+          </p>
+
+          <p className="text-white/50 max-w-md mb-8">
+            I build scalable web applications and data-driven solutions
+            using React, Node.js, and Python.
+          </p>
+
+          {/* CTA BUTTONS */}
+          <div className="flex gap-4 mb-6">
+            <button
+              className="
+                px-6 py-3 rounded-xl
+                bg-cyan-500/20 text-cyan-400
+                border border-cyan-400/30
+                hover:bg-cyan-500/30 transition
+              "
+            >
+              View Projects
+            </button>
+
+            <button
+              className="
+                px-6 py-3 rounded-xl
+                bg-purple-500/20 text-purple-300
+                border border-purple-400/30
+                hover:bg-purple-500/30 transition
+              "
+            >
+              Resume
+            </button>
+          </div>
+
+          {/* SOCIAL ICONS */}
+          <div className="flex gap-5 text-white/70">
+            <a
+              href="https://github.com/"
+              target="_blank"
+              className="hover:text-cyan-400 transition"
+            >
+              <Github size={22} />
+            </a>
+
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              className="hover:text-cyan-400 transition"
+            >
+              <Linkedin size={22} />
+            </a>
+
+            <a
+              href="https://leetcode.com/"
+              target="_blank"
+              className="hover:text-cyan-400 transition"
+            >
+              <SiLeetcode size={22} />
+            </a>
+          </div>
         </div>
 
-        <div className="mt-8 flex gap-4">
-          <button className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-xl hover:bg-cyan-400/30 hover:scale-105 transition-all">
-            View Projects
-          </button>
-          <button className="px-6 py-3 rounded-xl bg-purple-500/20 border border-purple-400/40 backdrop-blur-xl hover:bg-purple-400/30 hover:scale-105 transition-all">
-            Contact Me
-          </button>
+        {/* RIGHT PROFILE */}
+        <div className="flex items-center justify-center">
+          <div className="relative">
+            {/* Neon ring */}
+            <div className="absolute inset-0 rounded-full border border-cyan-400/40 blur-sm" />
+
+            {/* Profile image */}
+            <img
+              src="/profile.jpg"
+              alt="Syed Faiz"
+              className="
+                w-56 h-56 md:w-64 md:h-64
+                rounded-full
+                object-cover
+                bg-white/10
+                border border-white/20
+                relative z-10
+              "
+            />
+          </div>
         </div>
       </div>
-
-      {/* RIGHT PROFILE */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 6, repeat: Infinity }}
-        className="flex justify-center"
-      >
-        <div className="relative w-72 h-72 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-neon overflow-hidden">
-          <img
-            src="/profile.jpg"
-            alt="Syed Faiz"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </motion.div>
-    </motion.div>
+    </section>
   );
 }

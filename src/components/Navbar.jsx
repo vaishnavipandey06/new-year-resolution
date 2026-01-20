@@ -1,19 +1,44 @@
 import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
-  const linkClass = ({ isActive }) =>
-    `transition font-medium ${
-      isActive ? "text-cyan-400" : "text-white/70 hover:text-white"
-    }`;
+const links = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Skills", path: "/skills" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+];
 
+export default function Navbar() {
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50
-      backdrop-blur-xl bg-white/10 border border-white/20
-      rounded-full px-8 py-3 flex gap-8 shadow-lg">
-      
-      <NavLink to="/" className={linkClass}>Home</NavLink>
-      <NavLink to="/about" className={linkClass}>About</NavLink>
-      <NavLink to="/info" className={linkClass}>Info</NavLink>
-    </nav>
+    <header className="fixed top-0 left-0 w-full z-[100]">
+      <nav className="mx-auto max-w-7xl px-10 py-4
+        flex items-center justify-between
+        bg-[#0a0a1a]/70 backdrop-blur-xl
+        border-b border-white/10">
+
+        {/* Logo */}
+        <h1 className="text-lg font-semibold text-white tracking-wide">
+          Syed<span className="text-cyan-400">Faiz</span>
+        </h1>
+
+        {/* Links */}
+        <div className="flex gap-10 text-sm">
+          {links.map(link => (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className={({ isActive }) =>
+                `relative text-white/70 hover:text-cyan-400 transition
+                 after:absolute after:-bottom-1 after:left-0 after:h-[2px]
+                 after:bg-cyan-400 after:transition-all
+                 ${isActive ? "after:w-full text-cyan-400" : "after:w-0"}`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 }

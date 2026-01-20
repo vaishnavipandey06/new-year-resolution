@@ -1,174 +1,121 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-
-const skills = [
-  {
-    title: "Full Stack Web",
-    items: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL"],
-    color: "cyan",
-  },
-  {
-    title: "Data Science",
-    items: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
-    color: "green",
-  },
-  {
-    title: "DSA Foundations",
-    items: ["Arrays", "Strings", "Two Pointers", "Stacks", "HashMaps"],
-    color: "purple",
-  },
-  {
-    title: "Tools & Workflow",
-    items: ["TailwindCSS", "GitHub", "Docker", "Jupyter", "Neovim"],
-    color: "cyan",
-  },
-];
 
 export default function About() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#1a0a2e] to-[#2a0a3e] text-white">
+    <section className="relative min-h-screen bg-gradient-to-br from-[#0a0a1a] via-[#1a0a2e] to-[#2a0a3e] text-white px-6 pt-32 pb-24">
+      
+      {/* Ambient glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.12),transparent_60%)]" />
 
-      {/* background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.15),transparent_60%)]" />
+      <div className="relative max-w-5xl mx-auto space-y-20">
 
-      {/* container */}
-      <div className="relative max-w-[1280px] mx-auto px-6 pt-32 pb-32 space-y-32">
+        {/* ABOUT CARD */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="
+            rounded-3xl
+            bg-white/10 backdrop-blur-2xl
+            border border-white/20
+            px-10 py-12
+            shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+          "
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-white">About </span>
+            <span className="text-cyan-400">Me</span>
+          </h1>
 
-        {/* ================= HERO ================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+          <p className="text-white/80 leading-relaxed mb-6">
+            I am <span className="text-white font-medium">Syed Faiz</span>, a
+            <span className="text-cyan-300"> Full Stack Web Developer</span> with
+            a strong foundation in <span className="text-purple-300">data science</span>
+            and problem-solving. I focus on building scalable, maintainable web
+            applications using modern technologies.
+          </p>
 
-          {/* profile card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-2 flex justify-center"
-          >
-            <div className="w-[320px] h-[320px] rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_30px_80px_rgba(0,212,255,0.25)] flex items-center justify-center">
-              <span className="text-white/40 text-sm">
-                Profile Image
-              </span>
-            </div>
-          </motion.div>
+          <p className="text-white/70 leading-relaxed mb-6">
+            My experience includes frontend development with React, backend
+            systems using Node.js, and data-driven development using Python.
+            I enjoy working on solutions that require both engineering discipline
+            and analytical thinking.
+          </p>
 
-          {/* text */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="lg:col-span-3 space-y-6"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-cyan-400 tracking-wide">
-              Syed Faiz
-            </h1>
+          <p className="text-white/70 leading-relaxed">
+            I continuously improve my skills through hands-on projects, DSA
+            practice, and real-world problem solving. I value clean code,
+            performance, and long-term scalability in every project I build.
+          </p>
+        </motion.div>
 
-            <h2 className="text-xl md:text-2xl text-cyan-200">
-              Full Stack Developer | Junior Data Scientist
-            </h2>
-
-            <h3 className="text-sm md:text-base text-purple-300">
-              Python DSA • React • ML • CMR University CS
-            </h3>
-
-            <p className="max-w-xl text-gray-300 leading-relaxed">
-              Building scalable web applications and data-driven systems
-              with clean architecture and strong problem-solving foundations.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* ================= SKILLS ================= */}
-        <div className="space-y-16">
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-3xl md:text-4xl font-semibold text-cyan-300"
-          >
-            Technical Skills
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {skills.map((skill, i) => (
-              <SkillCard key={skill.title} skill={skill} delay={i * 0.1} />
-            ))}
-          </div>
-        </div>
-
-        {/* ================= CTA ================= */}
+        {/* CORE STRENGTHS */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-12 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]"
+          className="
+            rounded-3xl
+            bg-white/5 backdrop-blur-xl
+            border border-white/15
+            px-10 py-12
+          "
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-cyan-300">
-            Open for Full Stack / Data Roles (2026+)
+          <h2 className="text-2xl font-semibold mb-8 text-cyan-300">
+            Core Strengths
           </h2>
 
-          <p className="mt-4 text-gray-300">
-            Web apps • Data insights • Scalable systems
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/80">
+            <li>• Full Stack Web Development (React, Node.js, REST APIs)</li>
+            <li>• Data Analysis & Python Programming</li>
+            <li>• Strong DSA & Problem-Solving Fundamentals</li>
+            <li>• Clean Code & Scalable Architecture</li>
+            <li>• Project-Based Learning & Rapid Iteration</li>
+            <li>• Version Control & Collaborative Development</li>
+          </ul>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="
+            text-center
+            rounded-3xl
+            bg-white/10 backdrop-blur-xl
+            border border-white/20
+            px-10 py-12
+          "
+        >
+          <h3 className="text-2xl font-semibold text-cyan-300 mb-4">
+            Open to Full Stack & Data Opportunities
+          </h3>
+
+          <p className="text-white/70 mb-8">
+            Looking for roles where I can contribute, learn, and grow as a software professional.
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
-            <button className="px-8 py-3 rounded-full bg-cyan-400 text-black font-semibold hover:scale-105 transition">
-              Get Resume
-            </button>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <a
+              href="/resume.pdf"
+              className="px-6 py-3 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-400/30 hover:bg-cyan-500/30 transition"
+            >
+              Download Resume
+            </a>
 
-            <button className="px-8 py-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 transition">
-              LinkedIn
-            </button>
-
-            <button className="px-8 py-3 rounded-full border border-purple-400 text-purple-300 hover:bg-purple-400/10 transition">
-              GitHub
-            </button>
+            <a
+              href="mailto:your@email.com"
+              className="px-6 py-3 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-400/30 hover:bg-purple-500/30 transition"
+            >
+              Contact Me
+            </a>
           </div>
         </motion.div>
 
       </div>
     </section>
-  );
-}
-
-/* ================= SKILL CARD ================= */
-
-function SkillCard({ skill, delay }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 cursor-pointer hover:shadow-[0_0_40px_rgba(0,212,255,0.25)] transition"
-      onClick={() => setOpen(!open)}
-    >
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-cyan-300">
-          {skill.title}
-        </h3>
-        <span className="text-cyan-400 text-xl">
-          {open ? "–" : "+"}
-        </span>
-      </div>
-
-      <motion.div
-        initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        className="overflow-hidden"
-      >
-        <div className="mt-4 flex flex-wrap gap-3">
-          {skill.items.map((item) => (
-            <span
-              key={item}
-              className="px-4 py-2 rounded-full text-xs bg-white/10 border border-white/20"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }

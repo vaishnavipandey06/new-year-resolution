@@ -7,65 +7,44 @@ export default function NeonNetworkBackground() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    let w = (canvas.width = window.innerWidth);
+    let h = (canvas.height = window.innerHeight);
 
-    resize();
-    window.addEventListener("resize", resize);
-
-    const points = Array.from({ length: 70 }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
+    const points = Array.from({ length: 80 }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
     }));
 
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, w, h);
 
       points.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
 
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
         ctx.fillStyle = "#00d4ff";
-        ctx.fill();
+        ctx.fillRect(p.x, p.y, 2, 2);
       });
-
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const dx = points[i].x - points[j].x;
-          const dy = points[i].y - points[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.strokeStyle = "rgba(0,212,255,0.08)";
-            ctx.beginPath();
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
-            ctx.stroke();
-          }
-        }
-      }
 
       requestAnimationFrame(draw);
     }
 
     draw();
-
-    return () => window.removeEventListener("resize", resize);
+    window.onresize = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 opacity-40"
     />
   );
 }
