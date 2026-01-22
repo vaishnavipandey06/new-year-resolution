@@ -47,7 +47,7 @@ export default function Contact() {
           <div className="flex items-center justify-center gap-3 mb-8 text-white">
             <Mail className="text-cyan-400" />
             <span className="text-white/80">
-              syedfaiz052004@gmail.com
+              Vaishnavipandey3240@gmail.com
             </span>
           </div>
 
@@ -64,7 +64,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://github.com/Syed-faiz05"
+              href="https://github.com/vaishnavipandey06"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-full bg-white/10 border border-white/20

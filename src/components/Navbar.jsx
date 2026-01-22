@@ -18,7 +18,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <h1 className="text-lg font-semibold text-white tracking-wide">
-          Syed<span className="text-cyan-400">Faiz</span>
+          Vaishnavi<span className="text-cyan-400">Pandey</span>
         </h1>
 
         {/* Links */}

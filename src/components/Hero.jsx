@@ -20,8 +20,8 @@ export default function Hero() {
           <p className="text-white/60 mb-2">Hi there, I’m</p>
 
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="text-white">Syed </span>
-            <span className="text-cyan-400">Faiz</span>
+            <span className="text-white">Vaishnavi </span>
+            <span className="text-cyan-400">Pandey</span>
           </h1>
 
           <p className="text-white/70 mb-4">
@@ -70,7 +70,7 @@ export default function Hero() {
           {/* SOCIAL ICONS */}
           <div className="flex gap-5 text-white/70">
             <a
-              href="https://github.com/Syed-faiz05"
+              href="https://github.com/vaishnavipandey06"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-cyan-400 transition"
@@ -105,7 +105,7 @@ export default function Hero() {
 
             <img
               src="/profile.jpg"
-              alt="Syed Faiz"
+              alt="Vaishnavi Pandey"
               className="
                 w-56 h-56 md:w-64 md:h-64
                 rounded-full object-cover
