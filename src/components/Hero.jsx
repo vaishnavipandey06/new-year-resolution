@@ -51,7 +51,7 @@ export default function Hero() {
             </Link>
 
             <motion.a
-              href="/Syed_Faiz_Resume.pdf"
+              href="/VaishnaviPandey-1.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -79,7 +79,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/syed-faiz-547a2a2a4/"
+              href="https://www.linkedin.com/in/vaishnavi-pandey-62185a32a?"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-cyan-400 transition"
@@ -88,7 +88,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://leetcode.com/u/Syed_Faiz05/"
+              href="https://leetcode.com/u/aPX7C7KpOU/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-cyan-400 transition"

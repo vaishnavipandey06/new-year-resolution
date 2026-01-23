@@ -47,14 +47,14 @@ export default function Contact() {
           <div className="flex items-center justify-center gap-3 mb-8 text-white">
             <Mail className="text-cyan-400" />
             <span className="text-white/80">
-              Vaishnavipandey3240@gmail.com
+              vaishnavipandey3240@gmail.com
             </span>
           </div>
 
           {/* ICON LINKS */}
           <div className="flex justify-center gap-6 mb-10">
             <a
-              href="https://www.linkedin.com/in/syed-faiz-547a2a2a4/"
+              href="https://www.linkedin.com/in/vaishnavi-pandey-62185a32a?"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-full bg-white/10 border border-white/20
@@ -74,7 +74,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://leetcode.com/u/Syed_Faiz05/"
+              href="https://leetcode.com/u/aPX7C7KpOU/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-full bg-white/10 border border-white/20
@@ -86,7 +86,7 @@ export default function Contact() {
 
           {/* RESUME BUTTON */}
           <a
-            href="/Syed_Faiz_Resume.pdf"
+            href="/VaishnaviPandey-1.pdf"
             download
             className="
               inline-flex items-center gap-2
